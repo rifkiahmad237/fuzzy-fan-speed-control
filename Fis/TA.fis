@@ -1,0 +1,47 @@
+[System]
+Name='TA'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Suhu'
+Range=[0 80]
+NumMFs=3
+MF1='Rendah':'trapmf',[0 0 22 27]
+MF2='Sedang':'trapmf',[22 27 27 32]
+MF3='Tinggi':'trapmf',[27 32 80 80]
+
+[Input2]
+Name='Kelembaban'
+Range=[0 145]
+NumMFs=3
+MF1='Rendah':'trapmf',[0 0 34 50]
+MF2='Sedang':'trapmf',[34 50 50 66]
+MF3='Tinggi':'trapmf',[50 66 145 145]
+
+[Output1]
+Name='PWM'
+Range=[0 255]
+NumMFs=3
+MF1='Lambat':'trapmf',[0 0 50 100]
+MF2='Sedang':'trapmf',[50 100 100 150]
+MF3='Cepat':'trapmf',[100 220 255 255]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 1 (1) : 1
+1 3, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 2 (1) : 1
+2 3, 2 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
